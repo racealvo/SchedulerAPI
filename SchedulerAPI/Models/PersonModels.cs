@@ -63,45 +63,51 @@ namespace SchedulerAPI.Models
                     {
                         while (reader.Read())
                         {
-                            System.Diagnostics.Debug.WriteLine("{0} {1} {2}",
-                                reader.GetInt16(0), reader.GetString(1), reader.GetString(2));
-                            var a = reader.GetName(0);
-                            var b = reader.GetName(1);
-                            var c = reader.GetName(2);
-                            var d = reader.GetName(3);
+                            person.Id        = reader.GetInt16(0);
+                            person.FirstName = reader.GetString(1);
+                            person.LastName  = reader.GetString(2);
+
+                            //System.Diagnostics.Debug.WriteLine("{0} {1} {2}",
+                            //    reader.GetInt16(0), reader.GetString(1), reader.GetString(2));
+                            //var a = reader.GetName(0);
+                            //var b = reader.GetName(1);
+                            //var c = reader.GetName(2);
+                            //var d = reader.GetName(3);
                         }
                     }
                 }
             }
 
-            DataTable table = new DataTable();
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand())
-                {
-                    con.Open();
-                    command.Connection = con;
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "GetPerson";
-                    var param = new SqlParameter("@_PersonID", PersonID);
-                    param.Direction = ParameterDirection.Input;
-                    param.DbType = DbType.String;
-                    command.Parameters.Add(param);
+            //DataTable table = new DataTable();
+            //using (SqlConnection con = new SqlConnection(connectionString))
+            //{
+            //    using (SqlCommand command = new SqlCommand())
+            //    {
+            //        con.Open();
+            //        command.Connection = con;
+            //        command.CommandType = CommandType.StoredProcedure;
+            //        command.CommandText = "GetPerson";
+            //        var param = new SqlParameter("@_PersonID", PersonID);
+            //        param.Direction = ParameterDirection.Input;
+            //        param.DbType = DbType.String;
+            //        command.Parameters.Add(param);
 
-                    using (var da = new SqlDataAdapter())
-                    {
-                        da.SelectCommand = command;
-                        da.Fill(table);
-                        foreach (var row in table.Rows)
-                        {
-                            Person item = (Person)Activator.CreateInstance(typeof(Person), row);
-                            items.Add(item);
-                        }
-                    }
-                }
-            }
+            //        using (var da = new SqlDataAdapter())
+            //        {
+            //            da.SelectCommand = command;
+            //            da.Fill(table);
+            //            foreach (DataRow row in table.Rows)
+            //            {
+            //                foreach (var column in row.get)
+            //                { }
+            //                Person item = (Person)Activator.CreateInstance(typeof(Person), row);
+            //                items.Add(item);
+            //            }
+            //        }
+            //    }
+            //}
 
-            return items[0];
+            return person;
         }
     }
 }
