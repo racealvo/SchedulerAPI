@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http.Description;
 using System.Web.Mvc;
 
 namespace SchedulerAPI.Controllers
@@ -23,15 +24,15 @@ namespace SchedulerAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(string PersonID)
+        //[Route("{id:int}")]
+        public ActionResult Index(int PersonID)
         {
-            var x = 1;
-
             return View();
         }
 
         [HttpDelete]
-        public ActionResult Index(string PersonID)
+        [Route("~/delete/{PersonID}")]
+        public ActionResult Delete(string PersonID)
         {
             var x = 1;
 

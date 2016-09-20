@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SchedulerAPI.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace SchedulerAPI.Controllers
 {
@@ -15,10 +19,17 @@ namespace SchedulerAPI.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/DummyPerson/5
-        public string Get(int id)
+        // GET: api/Person/5
+        [HttpGet]
+        [Route("api/Person/{PersonID}")]
+        public JObject Index(Int16 PersonID)
         {
-            return "value";
+            PersonModels personModel = new Models.PersonModels();
+            Person person = personModel.GetPerson(PersonID);
+            string json = JsonConvert.SerializeObject(person);
+            return JObject.Parse(json);
+
+            //TODO: PersonID is out of range - error?
         }
 
         // POST: api/DummyPerson
