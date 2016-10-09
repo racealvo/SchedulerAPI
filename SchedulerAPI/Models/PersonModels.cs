@@ -5,6 +5,7 @@ using System.Web;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using SchedulerAPI.SQL;
 
 namespace SchedulerAPI.Models
 {
@@ -106,6 +107,19 @@ namespace SchedulerAPI.Models
             //        }
             //    }
             //}
+
+            SchedulerDBDataContext sqlObj = new SchedulerDBDataContext();
+            var p = from persons in sqlObj.Persons
+                    where persons.PersonID == PersonID
+                    select new
+                    {
+                        persons.PersonID,
+                        persons.FirstName,
+                        persons.LastName
+                    };
+
+            foreach (var per in )
+            person = p;
 
             return person;
         }
