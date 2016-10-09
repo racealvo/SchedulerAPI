@@ -152,5 +152,3 @@ C:\Users\Ray-2011\Documents\Projects\SchedulerAPI\SchedulerAPI\bin\System.Web.Ht
 C:\Users\Ray-2011\Documents\Projects\SchedulerAPI\SchedulerAPI\obj\Debug\SchedulerAPI.dll
 C:\Users\Ray-2011\Documents\Projects\SchedulerAPI\SchedulerAPI\obj\Debug\SchedulerAPI.pdb
 C:\Users\Ray-2011\Documents\Projects\SchedulerAPI\SchedulerAPI\obj\Debug\SchedulerAPI.csprojResolveAssemblyReference.cache
-C:\Users\Ray-2011\Documents\Projects\SchedulerAPI\SchedulerAPI\bin\AutoMapper.dll
-C:\Users\Ray-2011\Documents\Projects\SchedulerAPI\SchedulerAPI\bin\AutoMapper.xml

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SchedulerDB">
+  <DataContextMoniker Name="/SchedulerDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="ce556d57-a3ba-4988-b46e-9e2e6b0b4ec2" absoluteBounds="0.75, 4.625, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/SchedulerDBDataContext/Person" />
+      <nestedChildShapes>
+        <elementListCompartment Id="399fd08f-16bd-4836-8d78-71cba909c00a" absoluteBounds="0.765, 5.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5ca998c5-f72b-42a6-8628-f9391acc1813" absoluteBounds="0.75, 0.875, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/SchedulerDBDataContext/PersonType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce0f5bff-7380-4deb-96a4-96f09fd4804e" absoluteBounds="0.765, 1.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b8fbebd5-1eac-4957-b90f-d62f65990373" absoluteBounds="3.5, 0.875, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/SchedulerDBDataContext/PersonType_Person" />
+      <nestedChildShapes>
+        <elementListCompartment Id="494df585-46ca-461f-9e90-13d38e30ed80" absoluteBounds="3.515, 1.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.47199625651042); (3.5 : 1.47199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SchedulerDBDataContext/PersonType/PersonType_PersonType_Person" />
+      <nodes>
+        <classShapeMoniker Id="5ca998c5-f72b-42a6-8628-f9391acc1813" />
+        <classShapeMoniker Id="b8fbebd5-1eac-4957-b90f-d62f65990373" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.79890055338542); (4.5 : 5.79890055338542); (4.5 : 2.06899251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SchedulerDBDataContext/Person/Person_PersonType_Person" />
+      <nodes>
+        <classShapeMoniker Id="ce556d57-a3ba-4988-b46e-9e2e6b0b4ec2" />
+        <classShapeMoniker Id="b8fbebd5-1eac-4957-b90f-d62f65990373" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

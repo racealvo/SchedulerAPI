@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Scheduler" Class="SchedulerDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=RAY-2011-PC\RAYSQLSERVER;Initial Catalog=Scheduler;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SchedulerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Person" Member="Persons">
+    <Type Name="Person">
+      <Column Name="PersonID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Address1" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Address2" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Zip" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Person_PersonType_Person" Member="PersonType_Persons" ThisKey="PersonID" OtherKey="fk_PersonID" Type="PersonType_Person" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PersonType" Member="PersonTypes">
+    <Type Name="PersonType">
+      <Column Name="PersonTypeID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="PersonType_PersonType_Person" Member="PersonType_Persons" ThisKey="PersonTypeID" OtherKey="fk_PersonTypeID" Type="PersonType_Person" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PersonType_Person" Member="PersonType_Persons">
+    <Type Name="PersonType_Person">
+      <Column Name="fk_PersonTypeID" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="fk_PersonID" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="PersonType_PersonType_Person" Member="PersonType" ThisKey="fk_PersonTypeID" OtherKey="PersonTypeID" Type="PersonType" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Person_PersonType_Person" Member="Person" ThisKey="fk_PersonID" OtherKey="PersonID" Type="Person" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>
