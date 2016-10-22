@@ -4,4 +4,5 @@
 *.dll
 *.cache
 *.pdb
-SchedulerAPI\Web.config
+SchedulerAPI/Web.config
+*.suo
