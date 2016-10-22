@@ -1,4 +1,6 @@
-﻿using System;
+﻿// This is a test of .gitignore
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -118,8 +120,8 @@ namespace SchedulerAPI.Models
                         persons.LastName
                     };
 
-            foreach (var per in )
-            person = p;
+            //foreach (var per in )
+            //person = p;
 
             return person;
         }
