@@ -32,11 +32,16 @@ namespace SchedulerAPI.Controllers
             //TODO: PersonID is out of range - error?
         }
 
-        // POST: api/DummyPerson
-        public string Post([FromBody]string FirstName, [FromBody]string LastName, [FromBody]string Address1, [FromBody]string Address2, [FromBody]string City, [FromBody]string State, [FromBody]string Zip)
+        // POST: api/Person
+        [HttpPost]
+        [Route("api/Person")]
+        public JObject Post([FromBody]BLLPerson p)
         {
             // Call the SP in the database (model)
-            return "value";
+
+            PersonModels personModel = new Models.PersonModels();
+//            personModel.AddPerson(FirstName, LastName, Address1, Address2, City, State, Zip);
+            return new JObject();
         }
 
         // PUT: api/DummyPerson/5

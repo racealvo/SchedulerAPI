@@ -35,11 +35,48 @@ namespace SchedulerAPI.Models
 
     public class PersonModels
     {
-        public bool CreatePersonModels(string FirstName, string LastName, string Address1, string Address2, string City, string State, string Zip)
+        private void AddStringParam(SqlCommand command, string paramName, string paramValue)
         {
-            // Call CreatePerson SP in Scheduler DB
+            var param = new SqlParameter(paramName, paramValue);
+            param.Direction = ParameterDirection.Input;
+            param.DbType = DbType.String;
+            command.Parameters.Add(param);
+        }
 
-            return true;
+        public string AddPerson(string FirstName, string LastName, string Address1, string Address2, string City, string State, string Zip)
+        {
+            string response = string.Empty;
+            Person person = new Person();
+
+            // Call CreatePerson SP in Scheduler DB
+            string connectionString = ConfigurationManager.ConnectionStrings["Scheduler"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = con;
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "AddPerson";
+                    AddStringParam(command, "@_FirstName", FirstName);
+                    AddStringParam(command, "@_LastName", LastName);
+                    AddStringParam(command, "@_Address1", Address1);
+                    AddStringParam(command, "@_Address2", Address2);
+                    AddStringParam(command, "@_City", City);
+                    AddStringParam(command, "@_State", State);
+                    AddStringParam(command, "@_Zip", Zip);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            person.Id = reader.GetInt16(0);
+                        }
+                    }
+                    response = person.Id.ToString();
+                }
+            }
+            return response;
         }
 
         public Person GetPerson(Int16 PersonID)
